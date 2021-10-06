@@ -22,7 +22,7 @@ function App() {
               <TodoFormPage />
             </Route>
 
-            <Route path="/todos/" component={TodosPage}>
+            <Route path="/todos" component={TodosPage}>
               <TodosPage />
             </Route>
 
