@@ -8,6 +8,7 @@ export const Title = styled.h1`
 export const List = styled.ul`
   color: white;
   text-align: center;
+  margin-bottom: 30px;
 `;
 
 export const Item = styled.li`

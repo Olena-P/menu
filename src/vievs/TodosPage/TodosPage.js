@@ -8,16 +8,16 @@ export default function TodosPage(todo) {
   const history = useHistory();
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/")
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
       .then((response) => response.json())
-      .then((todos) => console.log(todos))
       .then((data) => {
         history.push("/todos");
-        setTodos(data.results);
+        setTodos(data);
+        console.log(data);
       })
       .catch((error) => setError(error));
   }, [history]);
-
+  console.log(todos);
   return (
     <>
       {todos && (
