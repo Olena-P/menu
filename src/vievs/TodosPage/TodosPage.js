@@ -8,7 +8,7 @@ export default function TodosPage(todo) {
   const history = useHistory();
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    fetch("https://jsonplaceholder.typicode.com/todos/")
       .then((response) => response.json())
       .then((todos) => console.log(todos))
       .then((data) => {
@@ -26,7 +26,9 @@ export default function TodosPage(todo) {
           <List>
             {todos.map((todo) => (
               <Item key={todo.id}>
-                <ItemTitle>{todo.title}</ItemTitle>
+                <ItemTitle>UserId: {todo.userId}</ItemTitle>
+                <ItemTitle>Title: {todo.title}</ItemTitle>
+                <ItemTitle>Completed: {todo.completed}</ItemTitle>
               </Item>
             ))}
           </List>
