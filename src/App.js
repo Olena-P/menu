@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { Switch, Route } from "react-router-dom";
+import Container from "./components/Container/Container";
+import NavState from "./context/navState";
+import MainMenu from "./components/MainMenu/MainMenu";
+import HomePage from "./vievs/HomePage/HomePage";
+import TodoFormPage from "./vievs/TodoFormPage/TodoFormPage";
+import TodosPage from "./vievs/TodosPage/TodosPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Suspense>
+        <NavState>
+          <MainMenu />
+          <Switch>
+            <Route path="/" exact component={HomePage}>
+              <HomePage />
+            </Route>
+
+            <Route path="/todoform" component={TodoFormPage}>
+              <TodoFormPage />
+            </Route>
+
+            <Route path="/todos/" component={TodosPage}>
+              <TodosPage />
+            </Route>
+
+            <Route>
+              <HomePage />
+            </Route>
+          </Switch>
+        </NavState>
+      </Suspense>
+    </Container>
   );
 }
 
